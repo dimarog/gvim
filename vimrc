@@ -1371,3 +1371,7 @@ if filereadable(glob("$HOME/myvimrc"))
     source $HOME/myvimrc
 endif
 autocmd! BufNewFile *.py call InsertPythonPackage() 
+
+
+"emacs auto emacsauto usage example:
+"runmod emacs -q -batch --eval "(setq vc-handled-backends 'nil)" -l emacs-site-lisp/site-start.el -l emacs-site-lisp/verilog-mode.el <file.v> -f verilog-batch-auto
