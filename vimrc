@@ -50,6 +50,11 @@ call pathogen#infect()
 "endif
 call pathogen#helptags()
 
+"command examples
+"open all results in tabs (all find results in this case):
+":arga `find . -name '*.log'` | tab all
+
+
 "Enable filetypes
 syntax on
 filetype plugin indent on
