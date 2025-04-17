@@ -100,6 +100,45 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+
+function! CnLint()
+  compiler cn_lint
+  execute 'make!'
+  echo "Press any key to continue..."
+  execute 'cwindow'
+endfunction
+
+function! LlmAsk(...)
+  let l:args = join(a:000, ' ')
+  let g:captured_args = l:args
+  "echo "captured args" . g:captured_args
+  compiler llm_ask
+  make!
+  "echo "Press any key to continue..."
+  execute 'copen'
+endfunction
+
+
+
+
+function! ChooseCommand()
+  let l:command = input("Choose command (and hit Enter):\n\t1 = cn_lint\n\t2 = llm\n")
+  echo "\n"
+  if l:command == "1"
+    call CnLint()
+  elseif l:command == "2"
+    let l:llm_ask = input("type your llm question, and hit enter:\n")
+    echo "\n"
+    call LlmAsk(l:llm_ask)
+  else
+    echo "Invalid command choice"
+  endif
+endfunction
+
+
+
+
+
 "for python activate supertab completion - need to move to filetype detect file
 let g:pymode_rope = 0
 let g:pymode = 0
